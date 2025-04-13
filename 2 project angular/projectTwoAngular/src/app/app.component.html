@@ -1,0 +1,22 @@
+<nz-layout class="container">
+  <nz-header class="header">AI Email Writer</nz-header>
+  <nz-content class="content">
+    <div class="form-container">
+      <label>Email Content:</label>
+      <textarea nz-input [(ngModel)]="emailContent" rows="4" placeholder="Type your email here..."></textarea>
+
+      <label>Select Tone:</label>
+      <nz-select [(ngModel)]="selectedTone" class="full-width">
+        <nz-option *ngFor="let tone of tones" [nzValue]="tone" [nzLabel]="tone"></nz-option>
+      </nz-select>
+
+      <button nz-button nzType="primary" class="send-btn" (click)="generateEmail()">Generate Email</button>
+      
+      <div *ngIf="generatedEmail" class="response-container">
+        <strong>Generated Email:</strong>
+        <p>{{ generatedEmail }}</p>
+        <button nz-button nzType="default" (click)="copyToClipboard()">Copy to Clipboard</button>
+      </div>
+    </div>
+  </nz-content>
+</nz-layout>
